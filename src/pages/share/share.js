@@ -49,7 +49,7 @@ Vue.prototype.wxShare = function(codeInfo) {
           if (data.code === 0 && data.msg === "success") {
             location.href = "index.html?state=" + data.data.id + "&openId=" + codeInfo.openId
           } else {
-            location.href = "index.html?payErro=pay_erro"
+            location.href = "index.html?shareErro=" + data.msg
           }
         })
       },

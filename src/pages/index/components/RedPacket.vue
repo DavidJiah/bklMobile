@@ -27,15 +27,15 @@ export default {
     const code = getQueryString("code")
     const qrCodeId = getQueryString("state")
     const openId = getQueryString("openId")
-    const payErro = getQueryString("payErro")
-    if (!payErro) {
+    const msg = getQueryString("shareErro")
+    if (!msg) {
       if (!openId) {
         this.init(code, qrCodeId)
       } else {
         this.getScanRes(qrCodeId, openId)
       }
     } else {
-      this.msg = payErro
+      this.msg = msg
     }
   },
   mounted() {
