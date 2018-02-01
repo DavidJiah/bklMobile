@@ -19,9 +19,8 @@ Vue.prototype.wxShare = function(codeInfo) {
       timestamp: data.timestamp, // 必填，生成签名的时间戳 由接口返回
       nonceStr: data.nonceStr, // 必填，生成签名的随机串 由接口返回
       signature: data.signature, // 必填，签名 由接口返回
-      jsApiList: ['onMenuShareTimeline', 'hideMenuItems'] // 此处填你所用到的方法 
+      jsApiList: ['onMenuShareTimeline', 'hideMenuItems'] // 此处填你所用到的方法  
     })
-    this.loading = false
   })
 
   wx.ready(() => {
@@ -56,7 +55,15 @@ Vue.prototype.wxShare = function(codeInfo) {
       // 用户取消分享后执行的回调函数
       cancel: function() {}
     })
+
+    wx.checkJsApi({
+      jsApiList: ['onMenuShareTimeline', 'hideMenuItems'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+      success: res => {
+        this.loading = false
+      }
+    })
   })
+
 
 }
 

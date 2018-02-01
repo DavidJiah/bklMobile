@@ -10,13 +10,14 @@ export function getOpenId(code) {
   })
 }
 
-export function initResult(qrCodeId, openId) {
+export function initResult(qrCodeId, openId, deviceInfo) {
   return request({
     url: '/mobile/scanQrCode',
     method: 'post',
     params: {
       qrCodeId: qrCodeId,
-      openId: openId
+      openId: openId,
+      deviceInfo: deviceInfo
     }
   })
 }

@@ -128,8 +128,6 @@ exports.htmlPlugin = function () {
             chunks: ['manifest', 'vendor', filename],
             inject: true
         }
-                console.log(conf)
-
         if (process.env.NODE_ENV === 'production') {
             conf = merge(conf, {
                 minify: {

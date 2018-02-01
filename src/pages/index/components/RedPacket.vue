@@ -10,7 +10,7 @@
 </template>
 <script>
 import { initResult, getOpenId } from "@/api"
-import { getQueryString } from "@/utils"
+import { getQueryString, getDevice } from "@/utils"
 import { LoaderRainbow } from "@/components/loaders"
 import Billboard from "./Billboard"
 import Success from "./Success"
@@ -86,7 +86,7 @@ export default {
     },
     getScanRes(qrCodeId, openId) {
       this.loading = true
-      initResult(qrCodeId, openId).then(res => {
+      initResult(qrCodeId, openId, getDevice()).then(res => {
         this.codeInfo = res.data.data
         this.msg = res.data.msg
         this.loading = false
