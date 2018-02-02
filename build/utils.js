@@ -107,7 +107,6 @@ exports.entries = function () {
     entryFiles.forEach((filePath) => {
         var filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'))
         map[filename] = filePath
-        console.log('js_'+filename , filePath)
     })
     return map
 }

@@ -6,26 +6,32 @@ export function getQueryString(name) {
 }
 
 export function getDevice() {
-  const device_type = navigator.userAgent //获取userAgent信息  
-  var md = new MobileDetect(device_type) //初始化mobile-detect  
-  var os = md.os() //获取系统  
-  var model = ""
-  if (os == "iOS") { //ios系统的处理  
-    os = md.os() + md.version("iPhone")
-    model = md.mobile();
-  } else if (os == "AndroidOS") { //Android系统的处理  
-    os = md.os() + md.version("Android")
-    var sss = device_type.split(";")
-    var i = contains(sss, "Build/")
-    if (i > -1) {
-      model = sss[i].substring(0, sss[i].indexOf("Build/"))
+  try {
+    const device_type = navigator.userAgent //获取userAgent信息  
+    const md = new MobileDetect(device_type) //初始化mobile-detect  
+    let os = md.os() //获取系统  
+    let model = ""
+    if (os == "iOS") { //ios系统的处理  
+      os = md.os() + md.version("iPhone")
+      model = md.mobile();
+    } else if (os == "AndroidOS") { //Android系统的处理  
+      os = md.os() + md.version("Android")
+      const sss = device_type.split(";")
+      const i = contains(sss, "Build/")
+      if (i > -1) {
+        model = sss[i].substring(0, sss[i].indexOf("Build/"))
+      } else {
+        model = '未知机型'
+      }
     }
+    return model + "---" + os //打印手机型号和系统版本
+  } catch (e) {
+    return '机型获取失败' + '（' + e + '）'
   }
-  return model + "---" + os //打印系统版本和手机型号  
 }
 
 const contains = function(arr, needle) {
-  for (let i in arr) {
+  for (let i = 0; i < arr.length; i++) {
     if (arr[i].indexOf(needle) > 0)
       return i;
   }
