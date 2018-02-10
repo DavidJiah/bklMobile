@@ -50,15 +50,7 @@ export function shareResult(openId, qrCodeId) {
     }
   })
 }
-export function countClickData(activityId) {
-  return request({
-    url: '/mobile/countClickData',
-    method: 'post',
-    params: {
-      activityId: activityId
-    }
-  })
-}
+
 export function getActivityScaned(listQuery) {
   return request({
     url: '/mobile/getActivityScaned',
