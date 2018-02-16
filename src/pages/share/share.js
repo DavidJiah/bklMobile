@@ -38,8 +38,8 @@ Vue.prototype.wxShare = function(codeInfo) {
     // 则可以直接调用，不需要放在ready函数中。
     wx.onMenuShareTimeline({ // 分享朋友圈
       title: codeInfo.vo.adTitle, // 分享标题
-      link: 'https://www.ijnkj.com/bkl/mobile/advert.html?activityId=' + codeInfo.activity, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-      // link: 'https://ijnkj.mynatapp.cc/advert.html?activityId=' + codeInfo.activity, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+      // link: 'https://www.ijnkj.com/bkl/mobile/advert.html?activityId=' + codeInfo.activity, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+      link: 'https://ijnkj.mynatapp.cc/advert.html?activityId=' + codeInfo.activity, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
       imgUrl: codeInfo.vo.adImg, // 分享图标
       // 用户确认分享后执行的回调函数
       success: function() {

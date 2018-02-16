@@ -1,17 +1,18 @@
 <template>
-  <div class="article">
-    <div class="article-title">{{value.title}}</div>
-    <div class="article-author">
-      <span>{{value.createDate | parseTime('{y}-{m}-{d}')}}</span>
-      <span>{{value.author}}</span>
+  <div class="article-contain">
+    <div class="article-contain-title">{{advert.title}}</div>
+    <div class="article-contain-author">
+      <span>{{advert.createDate | parseTime('{y}-{m}-{d}')}}</span>
+      <span>{{advert.author}}</span>
     </div>
-    <div v-html="value.content"></div>
+    <div v-html="advert.content"></div>
+    <div style="color: #8c8c8c">阅读 {{advert.readCount}}</div>
   </div>
 </template>
 <script>
 export default {
   props: {
-    value: {
+    advert: {
       type: Object,
       default: null
     }
@@ -19,11 +20,13 @@ export default {
 }
 
 </script>
-<style lang="scss" scoped>
-.article {
+<style lang="scss">
+.article-contain {
   margin: 20px 15px 15px;
   overflow-x: hidden;
   font-size: 16px;
+  background:#ffffff;
+  padding-bottom: 50px;
   &-title {
     margin-bottom: 10px;
     line-height: 1.4;
@@ -32,8 +35,9 @@ export default {
   }
   &-author {
     margin-bottom: 18px;
-    line-height: 20px;
+    line-height: 17px;
     color: #8c8c8c;
+    font-size: 17px;
     vertical-align: middle;
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <LoaderRainbow v-if="!advert"></LoaderRainbow>
-    <article v-else v-model="advert"></article>
+    <Article v-else :advert="advert"></Article>
   </div>
 </template>
 <script>
@@ -19,7 +19,7 @@ export default {
     return {
       url: '',
       loading: false,
-      advert: ''
+      advert: null
     }
   },
   created() {
@@ -27,16 +27,18 @@ export default {
     this.findAdvByActivityId(activityId)
   },
   methods: {
-    findAdvByActivityId() {
+    findAdvByActivityId(activityId) {
       this.loading = true
       findAdvByActivityId(activityId).then(res => {
         const data = res.data
         if (data.code === 0 && data.msg === 'success') {
           if (data.data.type === 1) {
+            document.title = '正在跳转'
             window.location.href = data.data.url
           }
           if (data.data.type === 0) {
             this.advert = data.data
+            document.title = data.data.vo.activityName
           }
         }
         this.loading = false

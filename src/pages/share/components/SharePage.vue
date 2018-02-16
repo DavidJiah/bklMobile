@@ -2,7 +2,7 @@
   <div class="share" :style="img">
     <LoaderDemo v-if="loading"></LoaderDemo>
     <div class="share-advert" v-if="codeInfo&&!loading">
-      <img :src="codeInfo.vo.adImg">
+      <img :src="baseUrl+codeInfo.vo.adImg">
       <span class="adTitle"> {{codeInfo.vo.adTitle}} </span>
     </div>
   </div>
@@ -26,7 +26,8 @@ export default {
         "-o-background-size": "100% 100%"
       },
       codeInfo: null,
-      loading: false
+      loading: false,
+      baseUrl: process.env.BASE_API
     }
   },
   mounted() {
@@ -37,7 +38,7 @@ export default {
       activity: getQueryString('activityId'),
       vo: {
         adTitle: decodeURI(getQueryString('adTitle')),
-        adImg: decodeURIComponent(getQueryString('adImg'))
+        adImg: this.baseUrl + decodeURIComponent(getQueryString('adImg'))
       }
     }
     setTimeout(() => {
