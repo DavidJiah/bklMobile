@@ -3,6 +3,10 @@ import App from './App'
 import wx from 'weixin-js-sdk'
 import 'lib-flexible'
 import 'babel-polyfill'
+import AlloyFinger from 'alloyfinger'
+import AlloyFingerVue from 'alloyfinger/vue/alloy_finger.vue'
+Vue.use(AlloyFingerVue, { AlloyFinger }) 
+
 import * as filters from '@/filters'
 require('es6-promise').polyfill()
 
