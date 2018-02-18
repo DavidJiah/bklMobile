@@ -80,10 +80,10 @@ export default {
   font-size: 0;
   background-color: #000000;
   overflow: hidden;
-  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
   left: 0;
   top: 0;
   bottom: 0;

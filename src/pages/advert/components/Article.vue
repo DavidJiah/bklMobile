@@ -40,9 +40,9 @@ export default {
         }
       } else {
         if (this.imgList.indexOf(obj.currentSrc) === 0) {
-          this.imgSelected = this.imgList[this.imgList.length -1]
+          this.imgSelected = this.imgList[this.imgList.length - 1]
         } else {
-          this.imgSelected = this.imgList[this.imgList.indexOf(obj.currentSrc) -1]
+          this.imgSelected = this.imgList[this.imgList.indexOf(obj.currentSrc) - 1]
         }
       }
     },
@@ -54,8 +54,14 @@ export default {
     const _this = this
     this.$nextTick(() => {
       const html = document.getElementById('advertHtml')
+      const htmlWidth = html.offsetWidth
       const imgHTMLCollection = html.getElementsByTagName('img')
       for (let i = imgHTMLCollection.length - 1; i >= 0; i--) {
+        if (imgHTMLCollection[i].offsetWidth >= htmlWidth) {
+          imgHTMLCollection[i].style.width = htmlWidth + 'px'
+          const imgScale = imgHTMLCollection[i].offsetHeight / imgHTMLCollection[i].offsetWidth
+          if (imgScale !== 0) imgHTMLCollection[i].style.height = (htmlWidth * imgScale) + 'px'
+        }
         _this.imgList.push(imgHTMLCollection[i].src)
         imgHTMLCollection[i].addEventListener("click", function() {
           _this.imgSelected = this.src
